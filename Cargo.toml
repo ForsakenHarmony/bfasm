@@ -4,7 +4,4 @@ version = "0.1.0"
 authors = ["ForsakenHarmony <me@hrmny.pw>"]
 
 [dependencies]
-peg = "0.5.1"
-
-[build-dependencies]
-peg = "0.5.1"
+nom = "2.2.1"
