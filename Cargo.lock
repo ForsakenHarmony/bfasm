@@ -2,13 +2,13 @@
 name = "bfasm"
 version = "0.1.0"
 dependencies = [
- "nom 2.2.1 (registry+https://github.com/rust-lang/crates.io-index)",
+ "pom 2.0.0-beta (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
-name = "nom"
-version = "2.2.1"
+name = "pom"
+version = "2.0.0-beta"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [metadata]
-"checksum nom 2.2.1 (registry+https://github.com/rust-lang/crates.io-index)" = "cf51a729ecf40266a2368ad335a5fdde43471f545a967109cd62146ecf8b66ff"
+"checksum pom 2.0.0-beta (registry+https://github.com/rust-lang/crates.io-index)" = "7201d6999626d604fcf8669da353efb4541c46f21ab917c6c49863713094a9dc"

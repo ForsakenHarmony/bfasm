@@ -26,7 +26,7 @@ fn new_val_from_string(s: String) -> Value {
 }
 
 named!(string <String>, map!(map_res!(alpha, str::from_utf8), String::from));
-named!(pub number <u32>, map!(map_res!(digit, str::from_utf8), to_int));
+named!(number <u32>, map!(map_res!(digit, str::from_utf8), to_int));
 
 named!(var_val<Variable>, map!(string, new_var_val));
 named!(var_arr<Variable>, complete!(map!(pair!(string, delimited!(tag!("["), number, tag!("]"))), new_var_arr)));
@@ -34,8 +34,8 @@ named!(var<Variable>, alt!(var_arr | var_val));
 
 named!(pub val_dec<Value>, map!(number, new_val_from_num));
 named!(pub val_hex<Value>, map!(do_parse!(tag!("0x") >> num: hex_u32 >> (num)), new_val_from_num));
-named!(val_str<Value>, map!(delimited!(tag!("\""), string, tag!("\"")), new_val_from_string));
-named!(pub val<Value>, alt!(val_dec | val_hex | val_str));
+named!(pub val_str<Value>, map!(delimited!(tag!("\""), string, tag!("\"")), new_val_from_string));
+named!(pub val<Value>, alt!(val_hex | val_str | val_dec));
 
 //named!(pub );
 

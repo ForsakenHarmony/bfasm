@@ -4,4 +4,4 @@ version = "0.1.0"
 authors = ["ForsakenHarmony <me@hrmny.pw>"]
 
 [dependencies]
-nom = "2.2.1"
+pom = "2.0.0-beta"

@@ -5,6 +5,12 @@ pub struct Variable {
 }
 
 #[derive(Debug, PartialEq)]
+pub struct VarRef(pub String);
+
+#[derive(Debug, PartialEq)]
+pub struct Block(pub Vec<Operation>);
+
+#[derive(Debug, PartialEq)]
 pub enum Value {
   Arr(Vec<u8>),
   Var(u8)
@@ -12,40 +18,29 @@ pub enum Value {
 
 #[derive(Debug, PartialEq)]
 pub enum VarVal {
-  Var(Variable),
+  Var(VarRef),
   Val(Value),
 }
 
 #[derive(Debug, PartialEq)]
 pub enum Operation {
-  While(Variable),
-  If(Variable),
-  Until(Variable),
-  End,
-  Set(Variable, Value),
-  Copy(Variable, Variable),
-  Add(Variable, VarVal),
-  Sub(Variable, VarVal),
-  Mul(Variable, VarVal),
-  Div(Variable, VarVal),
-  Read(Variable, u32),
-  Print(Variable, u32),
+  While(VarRef, Block),
+  Until(VarRef, Block),
+  If(VarRef, Block),
+  IfNot(VarRef, Block),
+  
+  Set(VarRef, VarVal),
+  Copy(VarRef, VarRef),
+  Add(VarRef, VarVal),
+  Sub(VarRef, VarVal),
+  Mul(VarRef, VarVal),
+  Div(VarRef, VarVal),
+  
+  Read(VarRef, u32),
+  Print(VarRef, u32),
+  
   Bf(u32, &'static [u8])
 }
 
 #[derive(Debug, PartialEq)]
-pub struct Program(Vec<Variable>, Vec<Operation>);
-
-impl Program {
-  pub fn new() -> Program {
-    Program(Vec::new(), Vec::new())
-  }
-  
-  pub fn push_var(&mut self, var: Variable) {
-    self.0.push(var);
-  }
-  
-  pub fn push_instruction(&mut self, op: Operation) {
-    self.1.push(op);
-  }
-}
+pub struct Program(pub Vec<Variable>, pub Block);
