@@ -4,7 +4,7 @@ use pom::char_class::{alphanum, digit};
 use pom::combinator::*;
 use pom::Parser;
 
-use ast::{Program, Operation, Variable, Value, VarVal, Block};
+use ast::{Variable, Value};
 
 use parser::util::*;
 

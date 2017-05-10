@@ -1,11 +1,11 @@
 use std::str::{self, FromStr};
 use std::u32;
 
-use pom::char_class::{hex_digit, alphanum, digit};
+use pom::char_class::{hex_digit, digit};
 use pom::combinator::*;
 use pom::Parser;
 
-use ast::{Program, Operation, Variable, Value, VarVal, Block};
+use ast::{Value};
 
 pub fn space_only<'a>() -> Combinator<impl Parser<'a, u8, Output=()>> {
   one_of(b" \t").repeat(1..).discard()
@@ -33,7 +33,7 @@ pub fn hex<'a>() -> Combinator<impl Parser<'a, u8, Output=Value>> {
     let mut res = 0u32;
     
     // Do not parse more than 2 characters for a u8
-    let mut parsed =
+    let parsed =
       if digits.len() > 2 {
         &digits[..2]
       } else {

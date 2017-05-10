@@ -29,7 +29,7 @@ pub enum Operation {
   If(VarRef, Block),
   IfNot(VarRef, Block),
   
-  Set(VarRef, VarVal),
+  Set(VarRef, Value),
   Copy(VarRef, VarRef),
   Add(VarRef, VarVal),
   Sub(VarRef, VarVal),
@@ -39,7 +39,7 @@ pub enum Operation {
   Read(VarRef, u32),
   Print(VarRef, u32),
   
-  Bf(u32, &'static [u8])
+  Bf(u32, Vec<u8>)
 }
 
 #[derive(Debug, PartialEq)]

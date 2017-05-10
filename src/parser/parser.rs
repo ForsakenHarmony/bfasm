@@ -1,10 +1,9 @@
-use std::str::{self, FromStr};
+use std::str::{self};
 
-use pom::char_class::{hex_digit, alphanum, digit};
 use pom::combinator::*;
 use pom::Parser;
 
-use ast::{Program, Operation, Variable, Value, VarVal, Block};
+use ast::{Program};
 
 use parser::util::*;
 use parser::vars::vars;
